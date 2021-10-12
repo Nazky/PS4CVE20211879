@@ -1,0 +1,26 @@
+<script>
+    var idd = null;
+    function onl()
+    {
+        idd = document.getElementById("idd");
+        idd.onload = null;
+        idd.src = './exp.html'
+    }
+    function f()
+    {
+        idd.onload = g;
+        idd.src = "./&foo=1";
+    }
+    function g()
+    {
+        idd.onload = null;
+        document.getElementById("cur").appendChild(document.createElement("a"));
+    }
+    </script>
+    <body>
+    <div id="id1"></div>
+    <div id="cur"></div><br>
+    <video id="vid"></video>
+    <iframe id="idd" style="display:none" onload="onl();"></iframe>
+    </body>
+    

